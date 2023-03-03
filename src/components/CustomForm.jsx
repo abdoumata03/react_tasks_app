@@ -27,7 +27,7 @@ const CustomForm = ({ addTask }) => {
         maxLength={60}
         className="font-poppins rounded-lg w-full text-gray-900 placeholder-gray-400 p-3 focus:outline-none"
       />
-      <button className="w-full md:w-1/3 p-3 bg-secondary rounded-lg mt-2 md:mt-0 md:ml-3 text-white whitespace-nowrap overflow-hidden">
+      <button className="w-full md:w-1/3 p-3 bg-secondary rounded-lg mt-2 md:mt-0 md:ml-3 text-white whitespace-nowrap overflow-hidden text-ellipsis">
         Add Task
       </button>
     </form>
