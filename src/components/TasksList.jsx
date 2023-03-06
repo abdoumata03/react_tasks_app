@@ -1,6 +1,7 @@
 import TaskItem from "./TaskItem"
 
-const TasksList = ({tasks, deleteTask, toggleTask}) => {
+
+const TasksList = ({tasks, deleteTask, toggleTask, focusModify, setTaskHook, setCurrentTask}) => {
 
 
 
@@ -12,6 +13,9 @@ const TasksList = ({tasks, deleteTask, toggleTask}) => {
         task= {task}
         deleteTask = {deleteTask}
         toggleTask = {toggleTask}
+        focusModify = {focusModify}
+        setTaskHook= {setTaskHook}
+        setCurrentTask = {setCurrentTask}
         />
        ))}
     </ul>

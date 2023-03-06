@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
-const TaskItem = ({ task, deleteTask, toggleTask }) => {
+const TaskItem = ({
+  task,
+  deleteTask,
+  toggleTask,
+  focusModify,
+  setTaskHook,
+  setCurrentTask
+}) => {
   const [isChecked, setIsChecked] = useState(task.checked);
 
   const handleCheckboxChange = (e) => {
     setIsChecked((prevState) => !prevState);
-    toggleTask(task.id)
+    toggleTask(task.id);
   };
 
-  return (    
+  return (
     <div className="w-full flex items-center bg-white rounded-lg p-3 mb-2 text-gray-900">
       <input
         type="checkbox"
@@ -19,18 +26,25 @@ const TaskItem = ({ task, deleteTask, toggleTask }) => {
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
-      <label
-        className={isChecked ? `line-through` : `no-underline`}
-      >
+      <label className={isChecked ? `line-through` : `no-underline`}>
         {task.name}
       </label>
-      <button className="ml-auto p-1">
+      <button
+        className="ml-auto p-1"
+        onClick={() => {
+          setTaskHook(task.name);
+          focusModify();
+          setCurrentTask(task);
+        }}
+      >
         <PencilIcon className="h-4 w-4" />
       </button>
       <button
         className="p-1 ml-2"
         aria-label={`Delete ${task.name} Task`}
-        onClick={() => {deleteTask(task.id); console.log("task deleted")}}
+        onClick={() => {
+          deleteTask(task.id);
+        }}
       >
         <TrashIcon className="h-4 w-4" />
       </button>
